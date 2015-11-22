@@ -65,6 +65,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             }
         }
     };
+
     //Messenger即有发送的功能，也有被标示是否另一个Messenger发送过来的消息由此Messenger的Hanlder来处理。
     private Messenger mGetReplayMessenger = new Messenger(mHandler);
 
@@ -104,6 +105,13 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //解绑服务
+        unbindService(mServiceConnection);
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_send2) {
             try {
@@ -117,7 +125,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 bundle.putString(Constants.MSG_KEY, msgStr);
                 msg.setData(bundle);
 //这句话很重要。在这里赋值给了msg.replyTo,在服务端才能获取到该Messenger，并且通过Messenger.send回客户端。
-                msg.replyTo = mGetReplayMessenger;//特别注意，这个Messenger是指明服务端发回的messager是由这个Messenger对应的Handler进行处理。
+                msg.replyTo
+                        = mGetReplayMessenger;//特别注意，这个Messenger是指明服务端发回的messager是由这个Messenger对应的Handler进行处理。
                 if (mMessenger != null) {
                     mMessenger.send(msg);
                 }

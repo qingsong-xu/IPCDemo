@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(mServiceConnection);
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_send) {
             try {
