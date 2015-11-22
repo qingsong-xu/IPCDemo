@@ -16,6 +16,21 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".client.MainActivity2">
+        </activity>
+
+        <service
+            android:name=".serviceport.MessagerService2"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote2">
+            <intent-filter>
+                <action android:name="com.xuqingsong.hate2"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+
         <service
             android:name=".serviceport.MessagerService"
             android:enabled="true"

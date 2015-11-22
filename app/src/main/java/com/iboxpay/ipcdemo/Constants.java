@@ -8,4 +8,5 @@ public interface Constants {
     int FROM_CLIENT_MESSAGE = 0;
     int FROM_SERVICE_MESSAGE = 1;
     String MSG_KEY = "msg";
+    String MSG_KEY_REPLAY = "replay";
 }
