@@ -26,6 +26,8 @@ import android.widget.EditText;
  * 2、启动后，点击时再发送
  *
  * 3、要获取服务端的消息，也需要Messenger.在ServiceConnection中new就好.Messenger是用来发消息的~。
+ *
+ * 这是第一个版本。这样的操作，只允许客户端向服务端放松消息。并没有服务端发送消息到客户端。
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
